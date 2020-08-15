@@ -1,9 +1,27 @@
 * {
     font-family: Lato, sans-serif;
+    color: rgb(0, 10, 2);
+    background-color: rgb(215, 254, 255);
 }
 #header, h2 {
     text-align: center;
 }
 h1 {
     font-family: Alata, sans-serif;
+}
+#gallery {
+    display: flex;
+}
+.card {
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgb(206, 206, 206);
+    border-radius: 25px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
 }
