@@ -1,6 +1,9 @@
 * {
     font-family: Lato, sans-serif;
 }
+#header, h2 {
+    text-align: center;
+}
 h1 {
     font-family: Alata, sans-serif;
 }
