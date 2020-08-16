@@ -1,27 +1,63 @@
 * {
     font-family: Lato, sans-serif;
     color: rgb(0, 10, 2);
-    background-color: rgb(215, 254, 255);
 }
-#header, h2 {
-    text-align: center;
+body {
+    background-color: rgb(215, 254, 255);
+    width: 95%;
+    margin: auto;
+}
+header {
+    background-color: rgb(157, 235, 238);
+    border-radius: 25px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+}
+#source {
+    right: 40px;
+}
+@media only screen and (max-width: 940px) {
+    #source {
+        display: none;
+    }
+}
+header p {
+    margin-bottom: 20px;
+}
+main {
+    top: 146px;
+    position: relative;
 }
 h1 {
     font-family: Alata, sans-serif;
 }
 #gallery {
     display: flex;
+    flex-wrap: wrap;
+    margin: 25px;
 }
 .card {
     width: 300px;
     height: 300px;
-    border: 2px solid rgb(206, 206, 206);
     border-radius: 25px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+}
+.card:hover {
+    background-color: rgb(179, 234, 236);
 }
 a {
     text-decoration: none;
+}
+img {
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+}
+.card p {
+    text-align: center;
 }
