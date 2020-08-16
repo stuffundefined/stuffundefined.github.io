@@ -6,6 +6,7 @@ body {
     background-color: rgb(215, 254, 255);
     width: 95%;
     margin: auto;
+    margin-top: 20px;
 }
 header {
     background-color: rgb(157, 235, 238);
@@ -28,12 +29,15 @@ header p {
     margin-bottom: 20px;
 }
 #source a {
-    color: rgb(16, 31, 245);
     padding: 10px;
     border-radius: 5px;
 }
-#source a:hover {
+#source a, p a {
+    color: rgb(16, 31, 245);
+}
+#source a:hover, p a:hover {
     background-color: rgb(179, 234, 236);
+    border-radius: 5px;
 }
 main {
     top: 156px;
@@ -70,4 +74,8 @@ img {
 }
 .card p {
     text-align: center;
+}
+iframe {
+    width: 95%;
+    height: 700px;
 }
