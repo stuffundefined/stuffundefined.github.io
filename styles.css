@@ -13,6 +13,8 @@ header {
     padding: 10px;
     position: fixed;
     z-index: 1;
+    height: 126px;
+    overflow: auto;
 }
 #source {
     right: 40px;
@@ -25,8 +27,16 @@ header {
 header p {
     margin-bottom: 20px;
 }
+#source a {
+    color: rgb(16, 31, 245);
+    padding: 10px;
+    border-radius: 5px;
+}
+#source a:hover {
+    background-color: rgb(179, 234, 236);
+}
 main {
-    top: 146px;
+    top: 156px;
     position: relative;
 }
 h1 {
