@@ -40,7 +40,7 @@ header p {
     border-radius: 5px;
 }
 main {
-    top: 156px;
+    top: 206px;
     position: relative;
 }
 h1 {
@@ -60,6 +60,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    margin: 20px;
 }
 .card:hover {
     background-color: rgb(179, 234, 236);
