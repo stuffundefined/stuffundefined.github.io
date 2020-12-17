@@ -2,3 +2,15 @@ body {
     background-color: rgb(18, 20, 36);
     color: rgb(227, 240, 255);
 }
+img, nav {
+    display: inline-block;
+}
+nav {
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+nav ul {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
