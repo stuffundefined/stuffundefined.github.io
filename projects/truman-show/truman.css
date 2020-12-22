@@ -1,6 +1,9 @@
 * {
     font-family: "Open Sans";
 }
+::selection {
+    background-color: red;
+}
 body {
     background-color: rgb(18, 20, 36);
     color: rgb(227, 240, 255);
@@ -21,20 +24,20 @@ nav ul {
     margin-bottom: 0px;
     list-style: none;
 }
-nav ul li {
+nav ul li, footer ul li {
     display: inline-block;
 }
-nav a {
+nav a, footer a, .notlink {
     color: white;
     text-decoration: none;
     font-family: Oswald;
     font-size: 24px;
 }
-nav a:hover {
+nav a:hover, footer a:hover {
     color: rgb(196, 196, 196);
 }
 /* dividers inbetween navlinks 👇*/
-nav a.notlast::after {
+nav a.notlast::after, footer a.notlast::after, .notlink::after {
     content: " |";
     color: white;
 }
@@ -42,10 +45,17 @@ h3 {
     text-align: center;
     font-size: 40px;
 }
-h3::selection {
-    background-color: red;
-}
 #imgcontainer {
-    width: 640px;
+    width: 75%;
     margin: auto;
+}
+main img {
+    width: 100%;
+}
+footer {
+    width: 50%px;
+    margin: auto;
+}
+.notlink:hover {
+    color: white !important;
 }
