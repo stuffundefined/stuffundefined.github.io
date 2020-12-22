@@ -38,3 +38,14 @@ nav a.notlast::after {
     content: " |";
     color: white;
 }
+h3 {
+    text-align: center;
+    font-size: 40px;
+}
+h3::selection {
+    background-color: red;
+}
+#imgcontainer {
+    width: 640px;
+    margin: auto;
+}
