@@ -43,9 +43,6 @@ main {
     top: 206px;
     position: relative;
 }
-h1 {
-    font-family: Alata, sans-serif;
-}
 #gallery {
     display: flex;
     flex-wrap: wrap;
