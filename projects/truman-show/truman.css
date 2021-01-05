@@ -53,8 +53,7 @@ main img {
     width: 100%;
 }
 footer {
-    width: 50%px;
-    margin: auto;
+    text-align: center;
 }
 .notlink:hover {
     color: white !important;
