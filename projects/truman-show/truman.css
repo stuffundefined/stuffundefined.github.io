@@ -45,6 +45,10 @@ h3 {
     text-align: center;
     font-size: 40px;
 }
+main p {
+    font-size: 24px;
+    text-align: center;
+}
 #imgcontainer {
     width: 75%;
     margin: auto;
@@ -54,7 +58,4 @@ main img {
 }
 footer {
     text-align: center;
-}
-.notlink:hover {
-    color: white !important;
 }
