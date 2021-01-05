@@ -41,13 +41,18 @@ nav a.notlast::after, footer a.notlast::after, .notlink::after {
     content: " |";
     color: white;
 }
-h3 {
+h3, h4, main p, footer {
     text-align: center;
+}
+h3 {
     font-size: 40px;
+}
+h4 {
+    font-size: 30px;
+    margin-bottom: 5px;
 }
 main p {
     font-size: 24px;
-    text-align: center;
 }
 #imgcontainer {
     width: 75%;
@@ -57,5 +62,7 @@ main img {
     width: 100%;
 }
 footer {
-    text-align: center;
+    display: inline-block;
+    position: absolute;
+    bottom: 0px;
 }
