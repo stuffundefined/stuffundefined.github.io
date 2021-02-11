@@ -1,6 +1,9 @@
 * {
     font-family: "Open Sans";
 }
+::selection {
+    background-color: red;
+}
 body {
     background-color: rgb(18, 20, 36);
     color: rgb(227, 240, 255);
@@ -21,16 +24,16 @@ nav ul {
     margin-bottom: 0px;
     list-style: none;
 }
-nav ul li {
+nav ul li, footer ul li {
     display: inline-block;
 }
-nav a {
+nav a, footer a, .notlink {
     color: white;
     text-decoration: none;
     font-family: Oswald;
     font-size: 24px;
 }
-nav a:hover {
+nav a:hover, footer a:hover {
     color: rgb(196, 196, 196);
 }
 /* dividers inbetween navlinks 👇*/
@@ -38,3 +41,37 @@ nav a.notlast::after {
     content: " |";
     color: white;
 }
+/* ------------------- */
+main {
+    margin-bottom: 100px;;
+}
+h3, h4, main p, footer {
+    text-align: center;
+}
+h3 {
+    font-size: 40px;
+}
+h4 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+main p {
+    font-size: 24px;
+}
+#imgcontainer {
+    width: 75%;
+    margin: auto;
+}
+main img {
+    width: 100%;
+}
+footer {
+    display: block;
+    width: 100%;
+}
+footer p {
+    text-align: center;
+}
+/* position: absolute;
+top: auto;
+bottom: 0px; */
