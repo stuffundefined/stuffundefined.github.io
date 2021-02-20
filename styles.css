@@ -16,9 +16,15 @@ header {
     z-index: 1;
     height: 126px;
     overflow: auto;
+    text-align: center;
 }
 #source {
     right: 40px;
+    bottom: 40px;
+    height: auto;
+}
+#source h1 {
+    padding: 15px 0;
 }
 @media only screen and (max-width: 940px) {
     #source {
@@ -29,7 +35,6 @@ header p {
     margin-bottom: 20px;
 }
 #source a {
-    padding: 10px;
     border-radius: 5px;
 }
 #source a, p a {
