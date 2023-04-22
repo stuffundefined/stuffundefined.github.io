@@ -1,5 +1,6 @@
 body {
-    height: 98vh;
+    margin: 0;
+    height: 100vh;
 }
 #center {
     width: 300px;
@@ -11,6 +12,7 @@ body {
     transform: translate(-50%, -50%);
     border: 1px solid black;
     background-color: white;
+    z-index: 2;
 }
 #center h1 {
     margin-bottom: 0;
@@ -24,12 +26,24 @@ body {
     margin-top: 20px;
 }
 #quadrants {
+    height: 100%;
     width: 100%;
-    height: 100%;
 }
-#quadrants tr {
-    height: 50%;
+#quadrants td {
+    border: 1px solid black;
+    width: 50%;
+    padding: 10px;
 }
-#quadrants tr td {
-    height: 100%;
+#quadrants td h1:not(.section-header) {
+    margin-top: 0;
+    text-align: center;
+}
+.section-header {
+    margin-top: 0;
+    position: sticky;
+    top: 0px;
+}
+td div {
+    overflow: auto;
+    height: calc(50vh - 25px);
 }
