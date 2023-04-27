@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>skynet</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body id="body">
+	<h1 style="text-align: center;">Hexapawn</h1>
+	<h2 style="text-align: center;">Martin Gardner’s Mathematical AI Game Brought to Life</h2>
+	<!-- 	<label for="boardselect">Board size:</label>
+	<select id="boardselect" autocomplete="off">
+	<script src="skynet.js"></script>
+		<option value="3,3" selected>3x3</option>
+		<option value="4,4">4x4</option>
+		<option value="3,4">3x4</option>
+		<option value="4,3">4x3</option>
+		<option value="5,5">5x5</option>
+	</select> -->
+	<div id="game" style="border: 2px solid black; margin: 50px auto 0px; width: 300px; position: relative;">
+	</div>
+	<p style="margin: 20px auto 0; width: 500px ">The red pieces are yours. They move like chess pawns (but not
+		exactly): They can move one square forward to an empty square and they can capture diagonally. A player wins
+		when one of their pieces advances to the other side of the board or the opponent is in a position with no
+		possible moves. There are no draws; One side will always win and the other will lose.</p>
+	<p style="margin: 20px auto 0; width: 500px">The computer starts
+	by making random moves and learns as you play. Whenever it loses (or runs into a "dead-end" situation), it adds
+	the previous position to a list of positions to avoid, and won't make moves that lead to any positions on that
+	list. The more the computer plays, the better it gets. Turn on pre-trained mode to play against a computer that
+	already knows the best moves.</p>
+	<p style="margin: 20px auto 0; width: 500px ">Before you start playing, can you figure out which side will win with optimal play?</p>
+	<script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+	<script src="./main.js" type="module"></script>
+</body>
+
+</html>
