@@ -50,7 +50,7 @@ function create() {
 	startGame(this, ...dims)
 	function setupGUI(scene) {
 		let preTrainedToggle = scene.add.rectangle(75, board.height * 100 + 55, 150, 45, 0x0082FF)
-		preTrainedToggle.text = scene.add.text(75, board.height * 100 + 55, 'pre-trained mode: off', { color: 'white', fixedWidth: 150, fontSize: 20, align: 'center', wordWrap: { width: 150 } });
+		preTrainedToggle.text = scene.add.text(75, board.height * 100 + 55, 'pre-trained mode: ' + (ourSkynet.preTrained ? 'on' : 'off'), { color: 'white', fixedWidth: 150, fontSize: 20, align: 'center', wordWrap: { width: 150 } });
 		preTrainedToggle.setOrigin(0, 0);
 		preTrainedToggle.setInteractive();
 		preTrainedToggle.on('pointerup', () => {
