@@ -85,7 +85,7 @@ export default class Skynet {
 		// console.log('lastboard')
 		// this.board.printBoard(this.board.printBoard(this.lastBoard))
 		console.log('ptbb includes this?', this.bb.includes(this.lastBoard.toString()))
-		this.badBoards.push()
+		this.badBoards.push(this.lastBoard.toString())
 		console.log('BadBoards')
 		this.badBoards.forEach(b => this.board.printBoard(this.txtToArr(b)))
 	}
