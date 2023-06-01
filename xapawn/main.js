@@ -3,9 +3,9 @@ import Skynet from './new_skynet.js'
 import Game from './game.js'
 
 let config = {
-	type: Phaser.AUTO,
-	width: 1600,
-	height: 1600,
+	type: Phaser.WEBGL,
+	width: 300,
+	height: 400,
 	backgroundColor: '#ffffff',
 	scene: {
 		preload: preload,
@@ -13,7 +13,7 @@ let config = {
 		update: update
 	},
 	dom: {createContainer: true},
-	parent: 'game'
+	canvas: document.getElementById('game-canvas')
 };
 let humanScore = 0;
 let computerScore = 0;
@@ -30,7 +30,7 @@ function create() {
 	let boardSelector = document.getElementById('boardselect')
 	boardSelector.addEventListener('change', (event) =>{
 		dims = event.target.value.split(',').map(x => Number(x))
-		console.log(Phaser.Scale.resize)
+		this.scale.resize(dims[0]*100, dims[1]*100+100)
 		this.events.emit('GameOver')
 	})
 	let board
