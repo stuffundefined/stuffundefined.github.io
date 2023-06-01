@@ -24,3 +24,8 @@ p {
     margin: 20px auto 0;
     width: 500px;
 }
+
+#homelink {
+    position: sticky;
+    top: 10px;
+}
