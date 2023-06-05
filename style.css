@@ -27,6 +27,9 @@ body {
     user-select: none;
     pointer-events: none;
 }
+#center a {
+    pointer-events: auto;
+}
 #center h1 {
     margin-bottom: 0;
 }
