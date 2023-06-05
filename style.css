@@ -25,6 +25,7 @@ body {
 }
 #center * {
     user-select: none;
+    pointer-events: none;
 }
 #center h1 {
     margin-bottom: 0;

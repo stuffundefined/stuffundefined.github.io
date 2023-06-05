@@ -1,7 +1,7 @@
 let center = document.getElementById('center')
 center.addEventListener('pointerdown', ev => {
-    center.style.top = (ev.y - ev.layerY + 150) + 'px';
-    center.style.left = (ev.x - ev.layerX + 150) + 'px';
+    center.style.top = (ev.y - ev.offsetY + 150) + 'px';
+    center.style.left = (ev.x - ev.offsetX + 150) + 'px';
 })
 center.addEventListener('pointermove', ev => {
     if (ev.buttons) {
