@@ -84,3 +84,11 @@ td div {
     padding: 10px;
     text-align: center;
 }
+
+.folder {
+    display: none;
+}
+
+.folder:target {
+    display: block;
+}
