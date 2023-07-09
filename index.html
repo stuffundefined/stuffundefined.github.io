@@ -4,17 +4,6 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="center">
-      <p class="arrow" draggable="false">🠒</p>
-      <p class="arrow" draggable="false">🠐</p>
-      <p class="arrow" draggable="false">🠑</p>
-      <p class="arrow" draggable="false">🠓</p>
-      <img src="./assets/pfp.png" alt="minecraft grass block with tongue sticking out face" draggable="false">
-      <h1 draggable="false">stuffundefined</h1>
-      <p draggable="false">is me</p>
-      <a draggable="false" href="https://en.pronouns.page/@stuffundefined" target="_blank">tiny little bio-like thing 🡭</a>
-    </div>
-    <script src="dragging.js"></script>
     <table id="quadrants">
       <tr>
         <td id="updates">
@@ -143,10 +132,39 @@
         <td id="otherstuff">
           <div>
             <h1 class="section-header">cool stuff (not mine)</h1>
-            <p>soon</p>
+            <div class="thinglist">
+              <div>
+                <h2>Blåhaj</h2>
+                <p>my shonks</p>
+                <a href="#test">open</a>
+                <div id="test" class="folder movable" draggable="false">
+                  <p class="arrow" draggable="false">🠒</p>
+                  <p class="arrow" draggable="false">🠐</p>
+                  <p class="arrow" draggable="false">🠑</p>
+                  <p class="arrow" draggable="false">🠓</p>
+                  <h1 class="folder-name">Blåhaj</h1>
+                  <div class="thinglist">
+                    <div><h2>big boi</h2><p>img soon</p></div>
+                    <div><h2>smol boi</h2><p>img soon</p></div>
+                  </div>
+                  <a class="close" draggable="false" href="#">close</a>
+                </div>
+              </div>
+            </div>
           </div>
         </td>
       </tr>
     </table>
+    <div id="center" class="movable">
+      <p class="arrow" draggable="false">🠒</p>
+      <p class="arrow" draggable="false">🠐</p>
+      <p class="arrow" draggable="false">🠑</p>
+      <p class="arrow" draggable="false">🠓</p>
+      <img src="./assets/pfp.png" alt="minecraft grass block with tongue sticking out face" draggable="false">
+      <h1>stuffundefined</h1>
+      <p draggable="false">is me</p>
+      <a draggable="false" href="https://en.pronouns.page/@stuffundefined" target="_blank">tiny little bio-like thing 🡭</a>
+    </div>
+    <script src="dragging.js"></script>
   </body>
 </html>
