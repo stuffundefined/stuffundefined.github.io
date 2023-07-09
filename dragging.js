@@ -1,15 +1,21 @@
 let draggables = document.getElementsByClassName('movable')
-for (element of draggables) {
-    element.addEventListener('pointerdown', ev => {
-        if (ev.target == element) {
-            element.style.top = (ev.y - ev.offsetY + 150) + 'px';
-            element.style.left = (ev.x - ev.offsetX + 150) + 'px';
+let maxZ = 3
+console.log(draggables)
+for (el of draggables) {
+    el.addEventListener('pointerdown', ev => {
+        if (ev.target.tagName != 'A') {
+            let el = ev.target
+            maxZ += 1;
+            el.style['z-index'] = maxZ;
+            el.style.top = (ev.y - ev.offsetY + el.offsetHeight/2) + 'px';
+            el.style.left = (ev.x - ev.offsetX + el.offsetWidth/2) + 'px';
         }
     })
-    element.addEventListener('pointermove', ev => {
-        if (ev.buttons && element.style.top && ev.target.tagName != 'A') {
-            element.style.top = Number(element.style.top.substring(0, element.style.top.length - 2)) + ev.movementY + 'px';
-            element.style.left = Number(element.style.left.substring(0, element.style.left.length - 2)) + ev.movementX + 'px';
+    el.addEventListener('pointermove', ev => {
+        if (ev.buttons && ev.target.style.top && ev.target.tagName != 'A') {
+            let el = ev.target
+            el.style.top = Number(el.style.top.substring(0, el.style.top.length - 2)) + ev.movementY + 'px';
+            el.style.left = Number(el.style.left.substring(0, el.style.left.length - 2)) + ev.movementX + 'px';
         }
     })
 }
