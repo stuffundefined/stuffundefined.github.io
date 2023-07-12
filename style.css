@@ -21,7 +21,7 @@ body {
     user-select: none;
     pointer-events: none;
 }
-.movable a {
+.movable a, .movable .close {
     pointer-events: auto;
 }
 .arrow {
@@ -36,7 +36,6 @@ body {
 }
 .close {
     font-size: 16px;
-    height: 16px;
     width: 40px;
     text-align: center;
     position: absolute;
@@ -100,19 +99,21 @@ td div {
     text-align: center;
 }
 
+.folder-button {
+    padding: 2px;
+    border: 1px solid #0000EE;
+    cursor: pointer;
+    color: #0000EE;
+}
+
 .folder {
-    display:none;
-    border: 1px solid black;
+    display: none;
     width: 50vw;
     height: 50vh;
 }
 
 .folder .thinglist {
     padding: 20px;
-}
-
-.folder:target {
-    display: unset;
 }
 
 .folder-name {
