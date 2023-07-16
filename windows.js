@@ -22,7 +22,7 @@ for (el of folderLinks) {
 for (el of closers) {
     el.addEventListener('click', ev => {
         let el = ev.target
-        el.parentNode.style.display = 'none'
+        el.parentNode.parentNode.style.display = 'none'
         window.location.href = window.location.href.split('#')[0] + '#' + urlFolderList().toSpliced(urlFolderList().indexOf(el.parentNode.id),1).join(';')
     })
 }
