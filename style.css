@@ -74,7 +74,7 @@ body {
     top: 0px;
 }
 
-td div {
+td > div {
     height: calc(50vh - 25px);
     overflow: auto;
 }
@@ -97,6 +97,12 @@ td div {
     align-items: center;
     padding: 10px;
     text-align: center;
+}
+
+.folder-link {
+    text-decoration: underline;
+    color: #0000EE;
+    cursor: pointer;
 }
 
 .folder-button {

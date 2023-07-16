@@ -28,6 +28,10 @@ for (el of closers) {
 }
 
 for (el of movables) {
+    if (el.id != 'center') {
+        el.style.top = (Math.random()*(window.innerHeight/2)+window.innerHeight/4) + 'px'
+        el.style.left = (Math.random()*(window.innerWidth/2)+window.innerWidth/4) + 'px'
+    }
     el.addEventListener('pointerdown', ev => {
         if (ev.target.tagName != 'A' && !ev.target.classList.contains('close')) {
             let el = ev.target
