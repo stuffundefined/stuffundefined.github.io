@@ -23,7 +23,7 @@ for (el of closers) {
     el.addEventListener('click', ev => {
         let el = ev.target
         el.parentNode.parentNode.style.display = 'none'
-        window.location.href = window.location.href.split('#')[0] + '#' + urlFolderList().toSpliced(urlFolderList().indexOf(el.parentNode.id),1).join(';')
+        window.location.href = window.location.href.split('#')[0] + '#' + urlFolderList().toSpliced(urlFolderList().indexOf(el.parentNode.parentNode.id),1).join(';')
     })
 }
 
