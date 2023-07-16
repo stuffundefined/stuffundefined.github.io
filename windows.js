@@ -3,7 +3,7 @@ let folderLinks = document.getElementsByClassName('folder-link')
 let folders = document.getElementsByClassName('folder')
 let closers = document.getElementsByClassName('close')
 let urlFolderList = () => (window.location.href.split('#').length > 1 ? window.location.href.split('#')[1].split(';'): [])
-let maxZ = 3
+let maxZ = 4
 
 for (id of urlFolderList()) {
     if(document.getElementById(id)) document.getElementById(id).style.display = 'unset'
@@ -31,6 +31,7 @@ for (el of movables) {
     if (el.id != 'center') {
         el.style.top = (Math.random()*(window.innerHeight/2)+window.innerHeight/4) + 'px'
         el.style.left = (Math.random()*(window.innerWidth/2)+window.innerWidth/4) + 'px'
+        el.style['z-index'] = maxZ
     }
     el.addEventListener('pointerdown', ev => {
         if (ev.target.tagName != 'A' && !ev.target.classList.contains('close')) {

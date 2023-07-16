@@ -21,7 +21,7 @@ body {
     user-select: none;
     pointer-events: none;
 }
-.movable a, .movable .close {
+.movable a, .movable .close, .thinglist > div {
     pointer-events: auto;
 }
 .arrow {
@@ -97,6 +97,7 @@ td > div {
     align-items: center;
     padding: 10px;
     text-align: center;
+    overflow: auto;
 }
 
 .folder-link {
