@@ -38,8 +38,8 @@ for (el of movables) {
             let el = ev.target
             maxZ += 1;
             el.style['z-index'] = maxZ;
-            el.style.top = (ev.y - ev.offsetY + el.offsetHeight/2) + 'px';
-            el.style.left = (ev.x - ev.offsetX + el.offsetWidth/2) + 'px';
+            el.style.top = (ev.y - ev.offsetY + el.offsetHeight/2 - 1) + 'px';
+            el.style.left = (ev.x - ev.offsetX + el.offsetWidth/2 - 1) + 'px';
         }
     })
     el.addEventListener('pointermove', ev => {
