@@ -9,6 +9,16 @@ for (id of urlFolderList()) {
     if(document.getElementById(id)) document.getElementById(id).style.display = 'unset'
 }
 
+window.addEventListener('hashchange', ev => {
+    for (folder of folders) {
+        if (urlFolderList().includes(folder.id)) {
+            folder.style.display = 'unset'
+        } else {
+            folder.style.display = 'none'
+        }
+    }
+})
+
 for (el of folderLinks) {
     el.addEventListener('click', ev => {
         let el = ev.target
