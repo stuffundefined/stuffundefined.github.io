@@ -22,7 +22,7 @@ body {
     user-select: none;
     pointer-events: none;
 }
-.movable a, .movable .close, .thinglist > div {
+.movable a, .movable .close, .thinglist > div, .movable .folder-link {
     pointer-events: auto;
 }
 .arrow {
@@ -124,10 +124,20 @@ td > div {
     top: 0;
 }
 
+.folder > p:not(.arrow) {
+    text-align: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
 .folder .thinglist {
     padding: 20px;
 }
 
 .folder-name {
     margin-top: 0;
+}
+
+ul {
+    text-align: left;
 }
