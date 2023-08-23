@@ -12,14 +12,14 @@ let config = {
 		create: create,
 		update: update
 	},
-	dom: {createContainer: true},
+	dom: { createContainer: true },
 	canvas: document.getElementById('game-canvas')
 };
 let humanScore = 0;
 let computerScore = 0;
 let ourSkynet = '+'
 var game = new Phaser.Game(config);
-let dims = [3,3]
+let dims = [3, 3]
 let gui = {}
 
 function preload() {
@@ -28,15 +28,19 @@ function preload() {
 }
 function create() {
 	let boardSelector = document.getElementById('boardselect')
-	boardSelector.addEventListener('change', (event) =>{
+	boardSelector.addEventListener('change', (event) => {
 		dims = event.target.value.split(',').map(x => Number(x))
-		this.scale.resize(dims[0]*100, dims[1]*100+100)
+		this.scale.resize(dims[0] * 100, dims[1] * 100 + 100)
 		this.events.emit('GameOver')
 	})
+	let modeSelector = document.getElementById('modeselect')
+	modeSelector.addEventListener('change', (event) => {
+		ourSkynet.computerMode = event.target.value
+	})
 	let board
-	function startGame(scene, w,h) {
+	function startGame(scene, w, h) {
 		board = new Board(scene, 0, 0, w, h, 100, 100, 0xd4aa80)
-		ourSkynet = new Skynet(board, typeof ourSkynet.badBoards == 'undefined' ? [] : ourSkynet.badBoards, ourSkynet.preTrained)
+		ourSkynet = new Skynet(board, typeof ourSkynet.badBoards == 'undefined' ? [] : ourSkynet.badBoards, ourSkynet.computerMode)
 		gui = setupGUI(scene)
 	}
 	function updateScoreDisplay() {
@@ -45,8 +49,8 @@ function create() {
 	let badBoards = []
 	startGame(this, ...dims)
 	function setupGUI(scene) {
-		let skipMoveButton = scene.add.rectangle(151, board.height * 100 + 55, 150, 45, 0x0082FF)
-		skipMoveButton.text = scene.add.text(151, board.height * 100 + 55, 'let computer go first', { color: 'white', fixedWidth: 150, fontSize: 19, align: 'center', wordWrap: { width: 150 } });
+		let skipMoveButton = scene.add.rectangle(0, board.height * 100 + 55, 150, 45, 0x0082FF)
+		skipMoveButton.text = scene.add.text(0, board.height * 100 + 55, 'let computer go first', { color: 'white', fixedWidth: 150, fontSize: 19, align: 'center', wordWrap: { width: 150 } });
 		skipMoveButton.setOrigin(0, 0);
 		skipMoveButton.setInteractive();
 		skipMoveButton.on('pointerup', () => {
@@ -55,18 +59,10 @@ function create() {
 			skipMoveButton.disableInteractive()
 		})
 		skipMoveButton.setInteractive()
-		let preTrainedToggle = scene.add.rectangle(0, board.height * 100 + 55, 150, 45, 0x0082FF)
-		preTrainedToggle.text = scene.add.text(0, board.height * 100 + 55, 'pre-trained mode: off', { color: 'white', fixedWidth: 150, fontSize: 20, align: 'center', wordWrap: { width: 150 } });
-		preTrainedToggle.setOrigin(0, 0);
-		preTrainedToggle.setInteractive();
-		preTrainedToggle.on('pointerup', () => {
-			ourSkynet.togglePreTrained()
-			preTrainedToggle.text.setText('pre-trained mode: ' + (ourSkynet.preTrained ? 'on' : 'off'))
-		})
 		let humanMoveText = scene.add.text(0, board.height * 100 + 24, 'your move!', { color: 'red', align: 'right', fixedWidth: 300, fontSize: 24 });
 		let scoreDisplay = scene.add.text(0, board.height * 100, `human ${humanScore} - ${computerScore} computer`, { color: 'black', align: 'right', fixedWidth: 300, fontSize: 24 });
 		scoreDisplay.setDepth(1)
-		return {skipMoveButton, preTrainedToggle, humanMoveText, scoreDisplay}
+		return { skipMoveButton, humanMoveText, scoreDisplay }
 	}
 	this.events.on('HumanMove', () => {
 		gui.skipMoveButton.disableInteractive()
@@ -103,7 +99,7 @@ function create() {
 				delete globalThis.skynet
 				board.selfDestruct()
 				this.text.destroy()
-				Object.values(gui).forEach(x=>x.destroy())
+				Object.values(gui).forEach(x => x.destroy())
 				startGame(this, ...dims)
 			}, 1000)
 		}, 1000)

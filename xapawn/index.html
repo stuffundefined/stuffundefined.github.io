@@ -1,47 +1,59 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
-		<title>Xapawn</title>
-		<link rel="stylesheet" href="gamepage.css">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Xapawn</title>
+	<link rel="stylesheet" href="gamepage.css">
+</head>
 
-	<body id="body">
-		<a href="../index.html" id="homelink">🠐 Home</a>
-		<h1 style="text-align: center;">Xapawn</h1>
+<body id="body">
+	<a href="../index.html" id="homelink">🠐 Home</a>
+	<h1 style="text-align: center;">Xapawn</h1>
 
-		<div id="size-select" class="center">
-			<label for="boardselect">Board size:</label>
-			<select id="boardselect" autocomplete="off">
-				<option value="3,3" selected>3x3</option>
-				<option value="4,4">4x4</option>
-				<option value="3,4">3x4</option>
-				<option value="4,3">4x3</option>
-				<option value="5,5">5x5</option>
-			</select>
+	<div id="size-select" class="center">
+		<label for="boardselect">Board size:</label>
+		<select id="boardselect" autocomplete="off">
+			<option value="3,3" selected>3x3</option>
+			<option value="4,4">4x4</option>
+			<option value="3,4">3x4</option>
+			<option value="4,3">4x3</option>
+			<option value="5,5">5x5</option>
+			<option value="6,6">6x6</option>
+		</select>
+	</div>
+
+	<div id="mode-select" class="center">
+		<label for="modeselect">AI mode:</label>
+		<select id="modeselect" autocomplete="off">
+			<option value="train" selected>Train as you play</option>
+			<option value="pretrained">Pre-trained</option>
+			<option value="minimax">Tree search (minimax)</option>
+		</select>
+	</div>
+
+	<div class='center'>
+		<div id="game">
+			<canvas id="game-canvas"></canvas>
+			<div id="skynet-banner">(hopefully not) Powered by SkyNet</div>
 		</div>
+	</div>
 
-		<div class='center'>
-			<div id="game">
-				<canvas id="game-canvas"></canvas>
-				<div id="skynet-banner">(hopefully not) Powered by SkyNet</div>
-			</div>
-		</div>
-		
-		<p>The red pieces are yours. They move like chess pawns (but not
-			exactly): They can move one square forward to an empty square and they can capture diagonally. A player wins
-			when one of their pieces advances to the other side of the board or the opponent is in a position with no
-			possible moves. At the beginning of the game, you may also skip your move so that the computer moves first. There are no draws; One side will always win and the other will lose.</p>
-		<p>The computer starts
-			by making random moves and learns as you play. Whenever it loses (or runs into a "dead-end" situation), it adds
-			the previous position to a list of positions to avoid, and won't make moves that lead to any positions on that
-			list. The more the computer plays, the better it gets. Turn on pre-trained mode to play against a computer that
-			already knows the best moves.</p>
-		<p><a href="../hexapawn/index.html" target="_blank">See a stripped-down version that I submitted to a thing</var></a></p>
-		<script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
-		<script src="main.js" type="module"></script>
-	</body>
+	<p>The red pieces are yours. They move like chess pawns (but not
+		exactly): They can move one square forward to an empty square and they can capture diagonally. A player wins
+		when one of their pieces advances to the other side of the board or the opponent is in a position with no
+		possible moves. At the beginning of the game, you may also skip your move so that the computer moves first.
+		There are no draws; One side will always win and the other will lose.</p>
+	<p>The computer starts
+		by making random moves and learns as you play. Whenever it loses (or runs into a "dead-end" situation), it adds
+		the previous position to a list of positions to avoid, and won't make moves that lead to any positions on that
+		list. The more the computer plays, the better it gets. Set the AI mode to Pre-trained to play against a computer that
+		already knows the best moves. Or set it to Tree Search to use an algorithm that looks ahead to find the best move.</p>
+	<p><a href="../hexapawn/index.html" target="_blank">See a stripped-down version that I submitted to a
+			thing</var></a></p>
+	<script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"></script>
+	<script src="main.js" type="module"></script>
+</body>
 
 </html>
