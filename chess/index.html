@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>replit</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css"
+		integrity="sha384-q94+BZtLrkL1/ohfjR8c6L+A6qzNH9R2hBLwyoAfu3i/WCvQjzL2RQJ3uNHDISdU" crossorigin="anonymous">
+</head>
+
+<body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+		integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+		crossorigin="anonymous"></script>
+
+	<script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"
+		integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD"
+		crossorigin="anonymous"></script>
+	<div id="col1">
+	<a href="../index.html">🠐 Home</a>
+	<h1>Franklin: A Chess Engine</h1>
+	<div id="myBoard" style="width:500px"></div>
+	<input id='fen' placeholder='Enter a FEN position'/>
+	<button id='loadbutton'>Load FEN</button>
+	<button id='reset'>Reset board</button>
+	<button id='switch'>Switch sides</button>
+	<p>Game status: <strong id='status'>your move</strong></p>
+	<label for="depth">Engine depth: <span id='depth-reading'>4</span></label>
+	<input id='depth' type="range" min=1 max=6 />
+	<p style="margin-top: 0">That's how many moves the engine will look ahead.<br>Higher numbers get exponentionally slower.<br>3 or 4 is recommended.</p>
+	
+	</div>
+	<div id='col2'>
+		<details>
+			<summary>Engine evaluation</summary>
+			<p></p>Engine evaluation: <b><span id="eval">make a move...</span></b></p>
+			<p>Positive = better for white. Negative = better for black.<br>100 is <i>roughly</i> equal to one pawn.<br>A ridiculously high number means checkmate.</p>
+		</details>
+		<p>Game history (PGN):</p>
+		<div id='pgn'></div>
+		<h2>How it works</h2>
+		<h3>TLDR:</h3>
+		<p>
+			<ul>
+<li>You wake up Franklin by making a move.</li>
+<li>Franklin finds all possible response moves.</li>
+<li>Franklin quickly looks over each move to sort them with the best-looking ones first.</li>
+<li>For each move, Franklin imagines making that move and does this same process from the opposite side's perspective, building a tree of possible positions.</li>
+<li>When Franklin grows its tree grows to a certain depth, Franklin evaluates how good each possible position is using factors like difference in material and piece development, and assigns it a score.</li>
+<li>Franklin chooses the move to which it gave the highest score as the best move.</li>
+<li>Franklin takes a nap while you think over your next move.</li>
+			</ul>
+		</p>
+		<h3>To get a bit more detailed about it:</h3>
+		<h4>Minimax</h4>
+<p>The core concept inside Franklin is <b>mini</b>mizing the <b>max</b>imum advantage the opponent could gain.
+If Franklin has scores for every move you can make in response to its move, Franklin will give its move the lowest score of your possible moves; that is, the worst (for Franklin) position that could happen after you respond to Franklin's move.
+If Franklin has scores for every move it can make, it will choose the highest-scored move; that is, the move where your best (for you) response is the least bad (for Franklin).
+</p><p>Franklin needs to look at A LOT of possibilities with this approach; <a href="https://oeis.org/A048987">there are at least 4,865,609 possible chess positions after two and a half moves from the starting position.</a>
+Franklin reduces its workload using <a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">alpha-beta pruning</a>. If Franklin finds an outcome for a move that's worse than a move it's already evaluated, Franklin can safely skip over this new move, "pruning" that part of the tree and saving a lot of work.</p>
+		<h4>Move sorting</h4>
+<p>Alpha-beta pruning works better when more favorable moves are evaluated first, so subsequent moves will be more likely to have worse outcomes than previously-evaluated moves, leading to pruning. To optimize for pruning, Franklin presorts its list of moves before doing a full evaluation on each one.
+When presorting moves, Franklin looks at whether the move is a pawn promotion, whether the move hangs a piece in front of a pawn, and, if the move is a capture, the values of the capturing and captured pieces (<a href="https://www.chessprogramming.org/MVV-LVA">Most Valuable Victim, Least Valuable Aggressor heuristic</a>).</p>
+<p>Additionally, if a branch is pruned, Franklin adds the move whose superiority caused the branch to be pruned to a list of "killer moves" for that depth from the root, if that move isn't a capture. These killer moves are evaluated before other moves. The idea is that if a move was found to be good on a previous search, it may still be a good move.</p>
+		<h4>Position evaluation</h4>
+<p>When it's finally time to give a score to a single position, Franklin looks at how well-positioned each piece on the board is. Franklin has built-in piece-square tables for each type of piece, with a score for every square that piece could end up on.
+These scores are combined with traditional material values to determine which side is ahead positionally, and by how much. Franklin also gives a very slight bonus to positions where the opposing king is in check.</p>
+<p>In the endgame, what makes a good position is different, and Franklin adapts by adding two new factors when there are 7 or fewer pieces on the board: A lower score when its king is farther from the opposing king, and a higher score when the opposing king is closer to the edges of the board. This allows Franklin to perform well in endgames without increasing its depth or using an endgame tablebase like <a href="https://syzygy-tables.info/">Syzygy</a>.</p>
+	</div>
+	<script src="script.js" type="module"></script>
+</body>
+
+</html>
