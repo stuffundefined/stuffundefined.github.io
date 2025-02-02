@@ -1,5 +1,6 @@
 import { Chess } from './js/chess.js'
 import { minimax, count, pruned } from './js/engine.js'
+import { getMove } from './js/alphamove.js'
 const chess = new Chess()
 chess.pieceCount = 32;
 let depth = 4;
@@ -22,20 +23,25 @@ function handleGameOver() {
 
 function computerMove() {
 	let startTime = Date.now()
-	let choice = minimax(chess, depth, -Infinity, Infinity, true)
+	let choice = document.getElementById('alphamove').checked ? getMove(chess) : minimax(chess, depth, -Infinity, Infinity, true)
 	let endTime = Date.now()
 	console.log(choice.move)
 	chess.move(choice.move)
 	otatop.load()
 	otatop.play()
-	if(choice.move.flags.includes('e') || choice.move.flags.includes('c')) {
+	if(!document.getElementById('alphamove').checked && (choice.move.flags.includes('e') || choice.move.flags.includes('c'))) {
 		chess.pieceCount--;
 	}
 	document.getElementById('status').innerText = 'your move'
 	if (chess.isGameOver()) {
 		handleGameOver()
 	}
-	console.log(`move: ${choice.move.san}\nscore: ${choice.score}\npositions: ${count}\npruned: ${pruned}\ntime: ${(endTime - startTime) / 1000}sec\nrate: ${Math.round(100000 * count / (endTime - startTime)) / 100}/sec\npieces: ${chess.pieceCount}`)
+	console.log(choice)
+	if (document.getElementById('alphamove').checked) {
+		console.log(`move: ${choice.move}\ntime: ${(endTime - startTime) / 1000}sec`)
+	} else{ 
+		console.log(`move: ${choice.move.san}\nscore: ${choice.score}\npositions: ${count}\npruned: ${pruned}\ntime: ${(endTime - startTime) / 1000}sec\nrate: ${Math.round(100000 * count / (endTime - startTime)) / 100}/sec\npieces: ${chess.pieceCount}`)
+	}
 	document.getElementById('eval').innerText = choice.score
 	board.position(chess.fen(), false)
 	document.getElementById('pgn').innerText = chess.pgn()
@@ -127,4 +133,8 @@ document.getElementById('switch').addEventListener('click',()=>{
 document.getElementById('depth').addEventListener('input',e=>{
 	depth = e.target.value
 	document.getElementById('depth-reading').innerText = e.target.value;
+})
+document.getElementById('alphamove').addEventListener('change',e=>{
+	console.log(e.target)
+	document.getElementById('depth').disabled = e.target.checked;
 })
