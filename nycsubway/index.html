@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<link rel="icon" href="https://glitch.com/favicon.ico" />-->
+    <title>Hello World!</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js" type="module"></script>
+    <script src="./leaflet.polylineoffset.js" type="module"></script>
+    <!--<script src="https://unpkg.com/chroma-js@3.1.2/dist/chroma.min.cjs"></script>-->
+    <!--<script src="https://github.com/gka/chroma.js/blob/main/dist/chroma.cjs"></script>-->
+    <script src="./full_data.js"></script>
+    <script src="./script.js" type="module"></script>
+  </head>
+  <body>
+    <a href="../index.html" class="ui">🠐 Home</a>
+    <div id="description" class="ui">
+      <details open>
+        <summary><h1>
+          How delayed was your NYC subway?
+          </h1></summary>
+        <p>This map shows how many extra minutes an average rider on each New York City Subway service would spend waiting for their train. The deepest shade of green corresponds to no delay, while the reddest red means one would need to wait two more minutes than scheduled. You can change the month you're looking at with the slider in the bottom left (It goes from January 2020 to October 2024). You can also use the dropdown to show data for rush hours or non-rush-hour times.</p>
+      </details>
+    </div>
+    <div id="options" class="ui">
+      <label for="monthslider">Year and month:</label>
+      <input type="range" id="monthslider" min="0" max="57" step="1" />
+      <output id="output" for="monthslider"></output>
+      <select id="peakiness">
+        <option value="peak">Peak times</option>
+        <option value="offpeak">Off-peak times</option>
+      </select>
+    </div>
+    <div id="map"></div>
+  </body>
+</html>
